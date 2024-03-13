@@ -4,14 +4,24 @@ import model.Message;
 import model.User;
 import java.util.List;
 
+/**
+ * Basic abstract implementation of the Chat class.
+ * All Chat classes should extend this class so all Chat classes have the same basic properties.
+ */
 public abstract class Chat implements ChatInterface {
     Long id = null;
     String name = null;
     List<User> participants = null;
     List<Message> messages = null;
 
-    public void addMessage(Message Message) {
-        this.messages.add(Message);
+    @Override
+    public void addMessage(Message message) {
+        this.messages.add(message);
+    }
+
+    @Override
+    public void delete() {
+        // delete this chat.
     }
 
     public Long getId() {
