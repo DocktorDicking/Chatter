@@ -2,6 +2,8 @@ package base;
 
 import model.Message;
 import model.User;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,10 +11,10 @@ import java.util.List;
  * All Chat classes should extend this class so all Chat classes have the same basic properties.
  */
 public abstract class Chat implements ChatInterface {
-    Long id = null;
+    long id;
     String name = null;
     List<User> participants = null;
-    List<Message> messages = null;
+    List<Message> messages = new ArrayList<>();
 
     @Override
     public void addMessage(Message message) {

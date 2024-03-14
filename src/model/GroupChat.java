@@ -6,7 +6,7 @@ import java.util.List;
 
 public class GroupChat extends Chat {
 
-    public GroupChat(Long id, String name, List<User> participants) {
+    public GroupChat(long id, String name, List<User> participants) {
         this.setId(id);
         this.setName(name);
         this.setParticipants(participants);

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PrivateChat extends Chat {
 
-    public PrivateChat(Long id, String name, List<User> participants) {
+    public PrivateChat(long id, String name, List<User> participants) {
         this.setId(id);
         this.setName(name);
         this.setParticipants(participants);

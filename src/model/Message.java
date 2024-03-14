@@ -3,13 +3,13 @@ package model;
 import java.sql.Timestamp;
 
 public class Message {
-    Long id;
+    long id;
     Long chatId;
     Long userId;
     Timestamp createdAt;
     String content;
 
-    public Message(Long id, Long chatId, Long userId, String content) {
+    public Message(long id, Long chatId, Long userId, String content) {
         this.id = id;
         this.chatId = chatId;
         this.userId = userId;

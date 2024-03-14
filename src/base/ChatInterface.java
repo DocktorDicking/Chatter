@@ -1,7 +1,12 @@
 package base;
 
-public interface ChatInterface {
+import model.Message;
 
-    // Should be able to transform the chat to group or "normal"
+/**
+ * Interface for the base abstract class Chat.
+ * This makes sure all Chat classes/objects share the same signature.
+ */
+public interface ChatInterface {
+    public void addMessage(Message message);
     public void delete();
 }
