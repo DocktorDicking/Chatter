@@ -1,6 +1,7 @@
 package model;
 
 import base.Chat;
+
 import java.util.List;
 
 public class PrivateChat extends Chat {
@@ -14,5 +15,13 @@ public class PrivateChat extends Chat {
     @Override
     public void delete() {
 
+    }
+
+    /**
+     * Promote this chat to Groupchat.
+     * @return
+     */
+    public GroupChat promote() {
+        return null;
     }
 }

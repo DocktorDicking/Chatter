@@ -17,22 +17,38 @@ import java.util.Map;
  * I want this project to be standalone and pure Java.
  *
  * This class uses a Singleton pattern to ensure there is only one of this type during runtime.
+ *
+ * This class uses:
+ * Singleton pattern.
+ * Map datastructure.
+ *
  */
 public class InMemDbHandler {
 
     private Map<String, List<?>> tableData;
     private static InMemDbHandler instance;
 
+    /**
+     * Default contructor for this object. It can only be called within this object itself by the getInstance() method.
+     */
     private InMemDbHandler() {
         tableData = new HashMap<>();
         this.initDatabase();
     }
 
+    /**
+     * Inits the demo/test data for this project to mimic a database.
+     */
     private void initDatabase() {
         tableData.put("user", this.createUsers());
         tableData.put("chat", this.createChats());
     }
 
+    /**
+     * Public method used by the dbController class to retrieve data from the Map.
+     * @param tableName
+     * @return List<?> objects
+     */
     public List<?> getTableData(String tableName) {
         if (this.tableExists(tableName)) {
             return tableData.get(tableName);
@@ -42,6 +58,11 @@ public class InMemDbHandler {
         }
     }
 
+    /**
+     * This method determines if this class is instantiated or not.
+     * Will return the instance or create a new one. Part of the Singleton pattern.
+     * @return
+     */
     public static InMemDbHandler getInstance() {
         if (instance == null) {
             instance = new InMemDbHandler();

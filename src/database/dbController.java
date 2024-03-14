@@ -11,6 +11,10 @@ import java.util.List;
  * In a real world situation you always use some sort of DBMS to talk to the database.
  *
  * This is that DMBS thingy.
+ *
+ * This class uses:
+ * Streams to iterate a List of objects and find an Object.
+ * Instance of a Singleton class.
  */
 public class dbController {
     private InMemDbHandler dbHandler;
@@ -44,6 +48,42 @@ public class dbController {
         }
 
         return next;
+    }
+
+    /**
+     * Tries to retrieve the User based on the given long id.
+     * Will return null if the given id is invalid or when the user does not exist.
+     * @param id long
+     * @return User || null
+     */
+    public User getUser(long id) {
+        if (id > 0L) {
+            // ignore unchecked cast since we are 100% certain this is a List with User objects.
+            List<User> users = (List<User>) this.dbHandler.getTableData("user");
+            return users.stream()
+                    .filter(current -> current.getId() == id)
+                    .findFirst()
+                    .orElse(null);
+        }
+        return null;
+    }
+
+    /**
+     * Tries to retrieve the User based on the given long id.
+     * Will return null if the given id is invalid or when the user does not exist.
+     * @param username String
+     * @return User || null
+     */
+    public User getUser(String username) {
+        if (!username.isEmpty()) {
+            // ignore unchecked cast since we are 100% certain this is a List with User objects.
+            List<User> users = (List<User>) this.dbHandler.getTableData("user");
+            return users.stream()
+                    .filter(current -> current.getUserName().equals(username))
+                    .findFirst()
+                    .orElse(null);
+        }
+        return null;
     }
 
     /**

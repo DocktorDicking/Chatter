@@ -20,4 +20,12 @@ public class GroupChat extends Chat {
     public void delete() {
 
     }
+
+    /**
+     * Demotes this chat to private chat.
+     * @return
+     */
+    public PrivateChat demote() {
+        return null;
+    }
 }
