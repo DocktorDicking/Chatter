@@ -10,8 +10,7 @@ import java.util.List;
  * Basic abstract implementation of the Chat class.
  * All Chat classes should extend this class so all Chat classes have the same basic properties.
  */
-public abstract class Chat implements ChatInterface {
-    long id;
+public abstract class Chat extends ChatterObject implements ChatInterface {
     String name = null;
     List<User> participants = null;
     List<Message> messages = new ArrayList<>();
@@ -24,14 +23,6 @@ public abstract class Chat implements ChatInterface {
     @Override
     public void delete() {
         // delete this chat.
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

@@ -1,28 +1,21 @@
 package model;
 
-public class User {
-    long id;
+import base.ChatterObject;
+
+public class User extends ChatterObject {
     String userName;
     String password; // should be hashed.
     String displayName;
 
     public User(long id) {
-        this.id = id;
+        this.setId(id);
     }
 
     public User(long id, String userName, String password, String displayName) {
-        this.id = id;
+        this.setId(id);
         this.userName = userName;
         this.password = password;
         this.displayName = displayName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUserName() {
