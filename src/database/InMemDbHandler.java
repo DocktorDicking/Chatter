@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * DO NOT USE DIRECTLY. This class is intended to be used by the dbController class.
  * A in memory database class that tries to mimic database interactions.
  * I want this project to be standalone and pure Java.
  *
@@ -27,6 +28,20 @@ public class InMemDbHandler {
         this.initDatabase();
     }
 
+    private void initDatabase() {
+        tableData.put("user", this.createUsers());
+        tableData.put("chat", this.createChats());
+    }
+
+    public List<?> getTableData(String tableName) {
+        if (this.tableExists(tableName)) {
+            return tableData.get(tableName);
+        } else {
+            //error
+            return null;
+        }
+    }
+
     public static InMemDbHandler getInstance() {
         if (instance == null) {
             instance = new InMemDbHandler();
@@ -35,19 +50,9 @@ public class InMemDbHandler {
         return instance;
     }
 
-    private void initDatabase() {
-        tableData.put("user", this.createUsers());
-        tableData.put("chat", this.createChats());
+    public boolean tableExists(String tableName) {
+        return tableData.containsKey(tableName);
     }
-
-    public List<Chat> getChats() {
-        return (List<Chat>) tableData.get("chat");
-    }
-
-    public List<User> getUsers() {
-        return (List<User>) tableData.get("user");
-    }
-
 
     /**
      * Creates the demo data for users.
@@ -86,16 +91,16 @@ public class InMemDbHandler {
             participants.add(users.get(2));
 
             chat = new PrivateChat(2L, "Prv Chat 2", participants);
-            chat.addMessage(new Message(4L, 2L, participants.get(2).getId(), "Hey friend, do not forget to bring donuts today!"));
+            chat.addMessage(new Message(4L, 2L, participants.get(1).getId(), "Hey friend, do not forget to bring donuts today!"));
             chat.addMessage(new Message(5L, 2L, participants.get(0).getId(), "Hi! Yeah I have them. Currntly on my way to the office."));
-            chat.addMessage(new Message(6L, 2L, participants.get(2).getId(), "Awesome! See you in a bit."));
+            chat.addMessage(new Message(6L, 2L, participants.get(1).getId(), "Awesome! See you in a bit."));
             chats.add(chat);
 
             chat = new GroupChat(3L, "GeneralChat", users);
-            chat.addMessage(new Message(7L, 3L, participants.get(0).getId(), "Hey all!"));
-            chat.addMessage(new Message(8L, 3L, participants.get(1).getId(), "Waddup!"));
-            chat.addMessage(new Message(9L, 3L, participants.get(2).getId(), "Yooooooo..."));
-            chat.addMessage(new Message(10L, 3L, participants.get(3).getId(), "Hello everyone!"));
+            chat.addMessage(new Message(7L, 3L, users.get(0).getId(), "Hey all!"));
+            chat.addMessage(new Message(8L, 3L, users.get(1).getId(), "Waddup!"));
+            chat.addMessage(new Message(9L, 3L, users.get(2).getId(), "Yooooooo..."));
+            chat.addMessage(new Message(10L, 3L, users.get(3).getId(), "Hello everyone!"));
             chats.add(chat);
         } else {
             //error

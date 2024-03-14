@@ -1,6 +1,80 @@
 package database;
 
-// Might do this later.
-public class dbController {
+import base.Chat;
+import base.ChatterObject;
+import model.User;
 
+import java.util.List;
+
+/**
+ * Controller that talks to our InMemDbPrototype class.
+ * In a real world situation you always use some sort of DBMS to talk to the database.
+ *
+ * This is that DMBS thingy.
+ */
+public class dbController {
+    private InMemDbHandler dbHandler;
+
+    public dbController() {
+        // InMemDbHandler is singleton
+        this.dbHandler = InMemDbHandler.getInstance();
+    }
+
+    /**
+     * Looks for the next available id for a table name.
+     * @param tableName
+     * @return
+     */
+    public Long getNextIdForTable(String tableName) throws ClassNotFoundException {
+        long next = 0L;
+
+        List<?> tableData = dbHandler.getTableData(tableName);
+
+        /*
+        Casting the List<?> to List<ChatterObject> since ChatterObject is our base object class.
+        All classes should implement ChatterObject in some way because it contains the long id member.
+        This saves some logic and extra loops which might improve performance.
+         */
+        if (!tableData.isEmpty() && tableData.get(0) instanceof ChatterObject) {
+            List<ChatterObject> objects = (List<ChatterObject>) tableData;
+            for (ChatterObject obj : objects) {
+                if (obj.getId() == next) next++;
+                if (obj.getId() > next) next = obj.getId() + 1; // Whenever the next == 0L
+            }
+        }
+
+        return next;
+    }
+
+    /**
+     * Public method to save any object that is supported by this dbController.
+     * This method accepts any instance of the Object class, the method will check if the Object is one of the supported
+     * classes we can save to the InMemDbHandler.
+     */
+    public boolean saveObject(Object obj) {
+        if (obj instanceof User) this.saveUser((User) obj);
+        if (obj instanceof Chat) this.saveChat((Chat) obj);
+        else return false; // throw error.
+        return true;
+    }
+
+    /**
+     * Conversion method to save the User Object.
+     * @param user
+     */
+    private void saveUser(User user) {
+        // We can ignore the unchecked cast warning since we are 100% certain this List is a List of User objects.
+        List<User> users = (List<User>) this.dbHandler.getTableData("user");
+        users.add(user);
+    }
+
+    /**
+     * Conversion method to save the Chat Object.
+     * @param chat
+     */
+    private void saveChat(Chat chat) {
+        // We can ignore the unchecked cast warning since we are 100% certain this List is a List of User objects.
+        List<Chat> chats = (List<Chat>) this.dbHandler.getTableData("chat");
+        chats.add(chat);
+    }
 }
