@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cb7bdfc-37dc-4d85-a442-445d54629924" name="Changes" comment="Added needed logic to the InMemDbHandler and dbController. Will expand on this next and add more functionality such as User retrieval and Chat retrieval.">
+    <list default="true" id="5cb7bdfc-37dc-4d85-a442-445d54629924" name="Changes" comment="Adding more structure to this project so we can work on this later.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/InMemDbHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/InMemDbHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/dbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/dbController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/GroupChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GroupChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PrivateChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PrivateChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/ChatFactoryInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/ChatFactoryInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/commandRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/CommandRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ChatFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ChatFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/dbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DbController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +53,20 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Chatter" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -61,7 +76,8 @@
       <option name="presentableId" value="Default" />
       <updated>1710170490798</updated>
       <workItem from="1710170491802" duration="6408000" />
-      <workItem from="1710260397315" duration="10821000" />
+      <workItem from="1710260397315" duration="11092000" />
+      <workItem from="1710492548451" duration="5807000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1710242982744</created>
@@ -105,7 +121,21 @@
       <option name="project" value="LOCAL" />
       <updated>1710430763260</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Documentation. &#10;Added some bare methods as an idea (demote/promote).">
+      <created>1710432085244</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710432085245</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Adding more structure to this project so we can work on this later.">
+      <created>1710432226968</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710432226969</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +148,9 @@
     <MESSAGE value="Refactored Long to long since we do not need the extra beef Long brings to the party. &#10;&#10;Working on implementing the InMemDbHandler." />
     <MESSAGE value="Added base object that contains the long id member of the class structure. Which saves us some duplicate code down the line where we want to be able to access this id." />
     <MESSAGE value="Added needed logic to the InMemDbHandler and dbController. Will expand on this next and add more functionality such as User retrieval and Chat retrieval." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added needed logic to the InMemDbHandler and dbController. Will expand on this next and add more functionality such as User retrieval and Chat retrieval." />
+    <MESSAGE value="Documentation. &#10;Added some bare methods as an idea (demote/promote)." />
+    <MESSAGE value="Adding more structure to this project so we can work on this later." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding more structure to this project so we can work on this later." />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

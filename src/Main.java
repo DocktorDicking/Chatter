@@ -1,18 +1,15 @@
-import database.InMemDbHandler;
-import database.dbController;
-
-import java.util.List;
+import cli.CommandRunner;
 
 /**
  * Purpose of this object is to refresh the Java basics.
  */
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException {
-        InMemDbHandler dbHandler = InMemDbHandler.getInstance();
-        List<?> objects = dbHandler.getTableData("user");
-
-        dbController db = new dbController();
-        long next = db.getNextIdForTable("user");
-        System.out.println(next);
+        CommandRunner cmd = new CommandRunner();
+        try {
+            cmd.run();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

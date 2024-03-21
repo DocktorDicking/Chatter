@@ -16,12 +16,18 @@ import java.util.List;
  * Streams to iterate a List of objects and find an Object.
  * Instance of a Singleton class.
  */
-public class dbController {
+public class DbController {
     private InMemDbHandler dbHandler;
+    private static DbController instance;
 
-    public dbController() {
+    private DbController() {
         // InMemDbHandler is singleton
         this.dbHandler = InMemDbHandler.getInstance();
+    }
+
+    public static DbController getInstance() {
+        if (instance == null) instance = new DbController();
+        return instance;
     }
 
     /**
